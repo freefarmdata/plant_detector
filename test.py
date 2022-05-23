@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 from lib.denoise import denoise
-from lib.contour import find_contours, draw_contours
+from lib.contour import find_contours, draw_contour
 from lib.pixel_mass import get_pixel_mass
 from lib.model import Model
 
@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     print(model)
 
-    image_file = './images/many_plants_2.jpg'
+    image_file = './images/plants.jpg'
     original_image = cv2.imread(image_file)
 
     denoised_mask = denoise(
@@ -32,9 +32,7 @@ if __name__ == "__main__":
 
     for contour in contours:
         mass = get_pixel_mass(denoised_mask, contour['contour'])
-        print('total', mass)
-
-    draw_contours(original_image, contours)
+        draw_contour(original_image, contour['contour'], contour['bbox'], mass)
 
     cv2.imshow('window', original_image)
     cv2.waitKey(0)

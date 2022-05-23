@@ -12,13 +12,10 @@ import imutils
 # CHAIN_APPROX_TC89_L1
 # CHAIN_APPROX_TC89_KCOS
 
-def draw_contours(image, contours):
-    for c in contours:
-        contour = c['contour']
-        bbox = c['bbox']
-        cv2.drawContours(image, [contour], 0, color=(0, 0, 255), thickness=2)
-        cv2.rectangle(image, (bbox[0], bbox[1]), (bbox[0]+bbox[2], bbox[1]+bbox[3]), color=(0, 0, 255), thickness=1)
-
+def draw_contour(image, contour, bbox, mass):
+    cv2.drawContours(image, [contour], 0, color=(0, 0, 255), thickness=2)
+    cv2.rectangle(image, (bbox[0], bbox[1]), (bbox[0]+bbox[2], bbox[1]+bbox[3]), color=(0, 0, 255), thickness=1)
+        
 
 def find_contours(
     mask,
