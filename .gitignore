@@ -1,0 +1,7 @@
+/images
+/venv
+
+__pycache__
+
+model.json
+raw_results.txt
